@@ -21,7 +21,7 @@ import java.util.Objects;
             return title;
         }
 
-        public int getYearOfPublication() {
+        public boolean getYearOfPublication() {
             return yearOfPublication;
         }
 

@@ -26,5 +26,5 @@ public class Rivista extends ElementoCatalogo {
                 ", periodicità=" + periodicity +
                 '}';
     }
-    
+
 }

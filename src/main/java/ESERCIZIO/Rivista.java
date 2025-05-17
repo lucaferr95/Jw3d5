@@ -19,11 +19,12 @@ public class Rivista extends ElementoCatalogo {
     @Override
     public String toString() {
         return "Rivista{" +
-                "title='" + getTitle() + '\'' +
+                "titolo='" + getTitle() + '\'' +
                 ", isbn='" + getIsbn() + '\'' +
-                ", year=" + getYearOfPublication() +
-                ", pages=" + getNumberOfPages() +
-                ", periodicity=" + periodicity +
+                ", anno di pubblicazione=" + getYearOfPublication() +
+                ", pagine=" + getNumberOfPages() +
+                ", periodicità=" + periodicity +
                 '}';
     }
+    
 }

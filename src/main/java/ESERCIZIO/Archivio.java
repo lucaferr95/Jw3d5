@@ -3,11 +3,13 @@ package ESERCIZIO;
 import exception.DuplicateItemException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Objects;
 
 public class Archivio {
-    private List<ElementoCatalogo> catalogoList = new ArrayList<>();
+    private List<ElementoCatalogo> catalogoList;
+
+    public Archivio() {
+        this.catalogoList = new ArrayList<>();
+    }
 
     public Archivio(List<ElementoCatalogo> catalogoList) {
         this.catalogoList = catalogoList;
@@ -19,21 +21,21 @@ public class Archivio {
 
     @Override
     public String toString() {
-        return "Archivio{" +
-                "catalogoList=" + catalogoList +
-                '}';
+        return "Archivio{catalogoList=" + catalogoList + "}";
     }
 
     //------------------1.METODO PER AGGIUNGERE CON ECCEZIONE DUPLICATE ----------------------------------//
-
     public void add(ElementoCatalogo e) throws DuplicateItemException {
-        boolean exists = catalogoList.stream().anyMatch(elementoCatalogo -> elementoCatalogo.getIsbn().equals(e.getIsbn()));
+        boolean exists = catalogoList.stream()
+                .anyMatch(elementoCatalogo -> elementoCatalogo.getIsbn().equals(e.getIsbn()));
+
         if (exists) throw new DuplicateItemException(e.getIsbn());
+
         catalogoList.add(e);
     }
 
-    //------------2.METODO FIND PER CERCARE UN ISBN CON LANCIO ECCEZIONE----//
 
+    //------------2.METODO FIND PER CERCARE UN ISBN CON LANCIO ECCEZIONE----//
     public ElementoCatalogo findByIsbn(String isbn) {
         return catalogoList.stream()
                 .filter(elementoCatalogo -> elementoCatalogo.getIsbn().equals(isbn))
@@ -41,8 +43,7 @@ public class Archivio {
                 .orElseThrow(RuntimeException::new);
     }
 
-    // ---------------    3.  METODO REMOVE CON ISBN   ----------------
-
+    //--------------- 3. METODO REMOVE CON ISBN ----------------//
     public void removeCatalogueElement(String isbn) {
         if (catalogoList.isEmpty()) {
             System.out.println("Il tuo archivio è vuoto!");
@@ -52,8 +53,7 @@ public class Archivio {
         }
     }
 
-    //       4.  METODO DI RICERCA PER ANNO PUBB ---------------- //
-
+    //------- 4. METODO DI RICERCA PER ANNO PUBB ----------------//
     public List<ElementoCatalogo> searchByYear(int year) {
         if (catalogoList.isEmpty()) {
             System.out.println("Il tuo archivio è vuoto!");
@@ -63,14 +63,15 @@ public class Archivio {
                     .filter(e -> e.getYearOfPublication() == year)
                     .toList();
 
-            System.out.println("Nessun elemento uscito nel: " + year + " è presente nella tua lista Archivio.");
+            if (elementoCatalogoList.isEmpty()) {
+                System.out.println("Nessun elemento uscito nel: " + year + " è presente nella tua lista Archivio.");
+            }
 
             return elementoCatalogoList;
         }
     }
 
-    //------------- 5  METODO DI RICERCA PER AUTORE ----------------------------------
-
+    //------------- 5 METODO DI RICERCA PER AUTORE ----------------//
     public List<ElementoCatalogo> searchByAuthor(String author) {
         if (catalogoList.isEmpty()) {
             System.out.println("Il tuo archivio è vuoto!");
@@ -90,8 +91,8 @@ public class Archivio {
 
         return searchByAuthorList;
     }
-    //-------------- 6. AGGIORNAMENTO DI UN ELEMENTO ESISTENTE DATO L’ISBN ---------------//
 
+    //-------------- 6. AGGIORNAMENTO DI UN ELEMENTO ESISTENTE DATO L’ISBN ---------------//
     public void aggiornaElemento(String isbn, ElementoCatalogo nuovoElemento) {
         for (int i = 0; i < catalogoList.size(); i++) {
             if (catalogoList.get(i).getIsbn().equals(isbn)) {
@@ -102,8 +103,8 @@ public class Archivio {
         }
         System.out.println("Nessun elemento trovato con ISBN: " + isbn);
     }
-//------------------ 7. STATISTICHE DEL CATALOGO ---------------------------//
 
+    //------------------ 7. STATISTICHE DEL CATALOGO ---------------------------//
     public void stampaStatisticheCatalogo() {
         long numLibri = catalogoList.stream().filter(e -> e instanceof Libro).count();
         long numRiviste = catalogoList.stream().filter(e -> e instanceof Rivista).count();
@@ -129,5 +130,4 @@ public class Archivio {
         }
         System.out.println("Media pagine: " + String.format("%.2f", media));
     }
-
 }

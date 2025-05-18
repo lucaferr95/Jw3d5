@@ -1,4 +1,4 @@
-package ESERCIZIO;
+package ESERCIZIO.Entities;
 
 import exception.DuplicateItemException;
 import java.util.ArrayList;

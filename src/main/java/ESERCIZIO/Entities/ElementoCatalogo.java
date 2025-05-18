@@ -1,10 +1,22 @@
-package ESERCIZIO;
+package ESERCIZIO.Entities;
+import jakarta.persistence.*;
+
+import java.util.List;
 import java.util.Objects;
+
+@Entity
+@Table(name = "elementi_catalogo")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
     public abstract class ElementoCatalogo {
+    @Id
+    @GeneratedValue
         private String isbn;
         private String title;
         private int yearOfPublication;
         private int numberOfPages;
+
+        @OneToMany (mappedBy = "elementoCatalogo")
+        private List<Prestito> prestiti;
 
         public ElementoCatalogo(String title, String isbn, int yearOfPublication, int numberOfPages) {
             this.title = title;

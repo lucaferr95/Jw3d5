@@ -1,4 +1,4 @@
-package ESERCIZIO;
+package ESERCIZIO.Entities;
 
 public class Libro extends ElementoCatalogo {
     private String author;
@@ -28,13 +28,6 @@ public class Libro extends ElementoCatalogo {
 
     @Override
     public String toString() {
-        return "Libro{" +
-                "titolo='" + getTitle() + '\'' +
-                ", isbn='" + getIsbn() + '\'' +
-                ", anno di pubblicazione=" + getYearOfPublication() +
-                ", pagine=" + getNumberOfPages() +
-                ", autore='" + author + '\'' +
-                ", genere='" + genre + '\'' +
-                '}';
+        return STR."Libro{titolo='\{getTitle()}', isbn='\{getIsbn()}', anno di pubblicazione=\{getYearOfPublication()}, pagine=\{getNumberOfPages()}, autore='\{author}', genere='\{genre}'}";
     }
 }

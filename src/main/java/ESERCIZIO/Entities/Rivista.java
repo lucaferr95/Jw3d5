@@ -1,4 +1,4 @@
-package ESERCIZIO;
+package ESERCIZIO.Entities;
 
 public class Rivista extends ElementoCatalogo {
     private Periodicity periodicity;

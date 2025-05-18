@@ -25,7 +25,7 @@ public class ProvaCatalogo {
                     case 7 -> statistiche();
                 }
             } catch (Exception e) {
-                System.out.println("Input errore");
+                System.out.println("Hai scelto di uscire dal ciclo");
             }
         }
     }

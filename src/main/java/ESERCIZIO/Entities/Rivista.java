@@ -1,5 +1,8 @@
 package ESERCIZIO.Entities;
 
+import jakarta.persistence.Entity;
+
+@Entity
 public class Rivista extends ElementoCatalogo {
     private Periodicity periodicity;
 

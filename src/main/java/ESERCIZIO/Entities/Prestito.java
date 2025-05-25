@@ -11,7 +11,13 @@ public class Prestito {
     @Id
     @GeneratedValue
     private int prestitoId;
+
+    @ManyToOne
+    @JoinColumn(name = "utente_id")
     private Utente utente;
+
+    @ManyToOne
+    @JoinColumn(name = "elemento_id")
     private ElementoCatalogo elementoPrestato;
     private LocalDate inizioPrestito;
     private LocalDate finePrestito;

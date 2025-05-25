@@ -1,14 +1,21 @@
 package ESERCIZIO.Entities;
 
+import jakarta.persistence.Entity;
+
+@Entity
 public class Libro extends ElementoCatalogo {
     private String author;
     private String genre;
 
-    public Libro(String title, String isbn, int yearOfPublication, int numberOfPages, String author, String genre) {
+    public Libro() {
+        super();
+    }
+    public Libro(String isbn, String title, int yearOfPublication, int numberOfPages, String author, String genre) {
         super(isbn, title, yearOfPublication, numberOfPages);
         this.author = author;
         this.genre = genre;
     }
+
 
     public String getAuthor() {
         return author;
@@ -27,7 +34,13 @@ public class Libro extends ElementoCatalogo {
     }
 
     @Override
+
+
     public String toString() {
-        return STR."Libro{titolo='\{getTitle()}', isbn='\{getIsbn()}', anno di pubblicazione=\{getYearOfPublication()}, pagine=\{getNumberOfPages()}, autore='\{author}', genere='\{genre}'}";
+        return "Libro{" +
+
+                "author='" + author + '\'' +
+                ", genre='" + genre + '\'' +
+                '}'+super.toString();
     }
 }

@@ -9,15 +9,16 @@ import java.util.Objects;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
     public abstract class ElementoCatalogo {
     @Id
-    @GeneratedValue
         private String isbn;
         private String title;
         private int yearOfPublication;
         private int numberOfPages;
 
-        @OneToMany (mappedBy = "elementoCatalogo")
+        @OneToMany (mappedBy = "elementoPrestato")
         private List<Prestito> prestiti;
 
+
+        public ElementoCatalogo(){}
         public ElementoCatalogo(String title, String isbn, int yearOfPublication, int numberOfPages) {
             this.title = title;
             this.isbn = isbn;

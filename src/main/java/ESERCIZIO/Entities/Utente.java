@@ -12,7 +12,7 @@ public class Utente {
     @Id
     @GeneratedValue
     @Column (name="num_tessera")
-    private int NumeroTessera;
+    private int numeroTessera;
 private String nome;
 private String cognome;
 
@@ -31,12 +31,20 @@ public Utente(){}
         this.dataNascita = dataNascita;
     }
 
+    public List<Prestito> getPrestiti() {
+        return prestiti;
+    }
+
+    public void setPrestiti(List<Prestito> prestiti) {
+        this.prestiti = prestiti;
+    }
+
     public int getNumeroTessera() {
-        return NumeroTessera;
+        return numeroTessera;
     }
 
     public void setNumeroTessera(int numeroTessera) {
-        NumeroTessera = numeroTessera;
+        this.numeroTessera = numeroTessera;
     }
 
     public String getNome() {
